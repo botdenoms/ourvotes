@@ -1,56 +1,73 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
-import {
-  Text,
-  View,
-} from 'react-native';
+
+import Home from './src/screens/Home'
+import Registration from './src/screens/Registration'
+import Validation from './src/screens/Validation'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function HomeScreen() {
+import {
+  DrawerContentScrollView,
+  DrawerItem
+} from '@react-navigation/drawer';
+
+function CustomDrawerContent(props) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>
-        HomeScreen
-      </Text>
-    </View>
+    <DrawerContentScrollView {...props}>
+      <DrawerItem
+        label="Close"
+        onPress={() => props.navigation.closeDrawer()}
+      />
+      <DrawerItem
+        label="Voter Registration"
+        onPress={() => props.parent.navigate('Registration')}
+      />
+      <DrawerItem
+        label="Voter Records"
+        onPress={() => props.parent.navigate('Validation')}
+      />
+    </DrawerContentScrollView>
   );
 }
 
-function RegistrationScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>
-        RegistrationScreen
-      </Text>
-    </View>
-  );
-}
-
-function ValidationScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>
-        ValidationScreen
-      </Text>
-    </View>
-  );
-}
-
-
+const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+
+function HomeScreen({navigation}) {
+  return (
+    <Drawer.Navigator 
+        drawerContent={(props) => <CustomDrawerContent {...props} parent={navigation} />}
+        screenOptions={{
+          headerShown: true,
+          headerTitle: 'OurVotes',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            elevation: 0,
+          }
+        }}
+      >
+      <Drawer.Screen name="main" component={Home} />
+    </Drawer.Navigator>
+  );
+}
 
 const App = () => {
 
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Registration" component={RegistrationScreen} />
-        <Drawer.Screen name="Validation" component={ValidationScreen} />
-      </Drawer.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Registration" component={Registration } />
+        <Stack.Screen name="Validation" component={Validation} />
+	    </Stack.Navigator>
     </NavigationContainer>
   );
 };
