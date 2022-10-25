@@ -8,7 +8,7 @@ import Validation from './src/screens/Validation'
 import Results from './src/screens/Results'
 import Voting from './src/screens/Voting'
 
-import {Bars3Icon, ChevronLeftIcon, UserPlusIcon, PencilSquareIcon} from "react-native-heroicons/solid";
+import {ChevronLeftIcon, UserPlusIcon, PencilSquareIcon} from "react-native-heroicons/solid";
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -16,7 +16,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import {
   DrawerContentScrollView,
-  // DrawerItem
 } from '@react-navigation/drawer';
 import {
   View,
@@ -42,18 +41,6 @@ function CustomDrawerContent(props) {
           <Text style={styles.linkText}>Voter Records</Text>
         </TouchableOpacity>
       </View>
-      {/* <DrawerItem
-        label="Close"
-        onPress={() => props.navigation.closeDrawer()}
-      />
-      <DrawerItem
-        label="Voter Registration"
-        onPress={() => props.parent.navigate('Registration')}
-      />
-      <DrawerItem
-        label="Voter Records"
-        onPress={() => props.parent.navigate('Validation')}
-      /> */}
     </DrawerContentScrollView>
   );
 }

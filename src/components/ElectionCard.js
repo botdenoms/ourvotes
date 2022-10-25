@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView, Button } from 'react-native'
+import { View, Text, StyleSheet, ScrollView} from 'react-native'
 import React from 'react'
 
 import CandidateCard from './CandidateCard'
@@ -36,7 +36,6 @@ export default function ElectionCard({active, callback}) {
                 color={active?'red':'#003399'} 
                 callback={callback}
             />
-            {/* <Button color={active?'red':'#003399'} title={!active? 'Results' : 'Vote'} /> */}
         </View>
     </View>
   )

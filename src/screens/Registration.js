@@ -8,7 +8,7 @@ export default function Registration({navigation}) {
     <SafeAreaView>
       <View style={styles.body}>
         <View style={styles.appbar}>
-	  <Pressable onPress={()=> navigation.goBack()}>
+	        <Pressable onPress={()=> navigation.goBack()}>
             <ChevronLeftIcon color="#1e1e1e" size={24}/>
           </Pressable>
           <Text style={{color: '#1e1e1e'}}>Voter registration</Text>
@@ -33,6 +33,5 @@ const styles = StyleSheet.create({
   appbar:{
     flexDirection: 'row',
     justifyContent: 'space-between',
-
   }
 });
