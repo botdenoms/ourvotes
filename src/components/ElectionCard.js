@@ -2,8 +2,9 @@ import { View, Text, StyleSheet, ScrollView, Button } from 'react-native'
 import React from 'react'
 
 import CandidateCard from './CandidateCard'
+import CustomButton from './CustomButton'
 
-export default function ElectionCard({active}) {
+export default function ElectionCard({active, callback}) {
   return (
     <View style={styles.card}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -30,7 +31,12 @@ export default function ElectionCard({active}) {
                 </View>
                 : null
             }
-            <Button color={active?'red':'#003399'} title={!active? 'Results' : 'Vote'} />
+            <CustomButton 
+                title={!active? 'Results' : 'Vote'} 
+                color={active?'red':'#003399'} 
+                callback={callback}
+            />
+            {/* <Button color={active?'red':'#003399'} title={!active? 'Results' : 'Vote'} /> */}
         </View>
     </View>
   )

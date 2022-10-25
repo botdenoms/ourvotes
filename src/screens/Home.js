@@ -9,17 +9,26 @@ import ElectionCard from '../components/ElectionCard';
 
 import React from 'react'
 
-export default function Home() {
+export default function Home({stack}) {
+
+  const toVoting = () =>{
+    stack.navigate('Voting')
+  }
+
+  const toResults = () =>{
+    stack.navigate('Results')
+  }
+
   return (
     <View style={styles.body}>
         <Text style={styles.title}>on going</Text>
-        <ElectionCard active={true}/>
+        <ElectionCard active={true} callback={toVoting}/>
         <Text style={styles.title}> Previous</Text>
         <ScrollView>
-          <ElectionCard active={false}/>
-          <ElectionCard active={false}/>
-          <ElectionCard active={false}/>
-          <ElectionCard active={false}/>
+          <ElectionCard active={false} callback={toResults}/>
+          <ElectionCard active={false} callback={toResults}/>
+          <ElectionCard active={false} callback={toResults}/>
+          <ElectionCard active={false} callback={toResults}/>
         </ScrollView>
     </View>
   )

@@ -1,17 +1,17 @@
 import { View, Text, SafeAreaView, StyleSheet, Pressable} from 'react-native'
 import React from 'react'
 
-import {ChevronLeftIcon} from "react-native-heroicons/solid";
+import {ChevronLeftIcon} from "react-native-heroicons/solid"
 
-export default function Registration({navigation}) {
+export default function Voting({navigation}) {
   return (
     <SafeAreaView>
       <View style={styles.body}>
         <View style={styles.appbar}>
-	  <Pressable onPress={()=> navigation.goBack()}>
+          <Pressable onPress={()=> navigation.goBack()}>
             <ChevronLeftIcon color="#1e1e1e" size={24}/>
           </Pressable>
-          <Text style={{color: '#1e1e1e'}}>Voter registration</Text>
+          <Text style={{color: '#1e1e1e'}}>Voting</Text>
           <View style={{width: 10}}></View>
         </View>
         <View style={{justifyContent:'center', alignItems:'center', height: '100%'}}>
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
   },
   appbar:{
     flexDirection: 'row',
-    justifyContent: 'space-between',
-
+    justifyContent: 'space-between'
   }
 });

@@ -5,6 +5,8 @@ import React from 'react';
 import Home from './src/screens/Home'
 import Registration from './src/screens/Registration'
 import Validation from './src/screens/Validation'
+import Results from './src/screens/Results'
+import Voting from './src/screens/Voting'
 
 import {Bars3Icon, ChevronLeftIcon, UserPlusIcon, PencilSquareIcon} from "react-native-heroicons/solid";
 
@@ -63,17 +65,20 @@ function HomeScreen({navigation}) {
   return (
     <Drawer.Navigator 
       drawerContent={(props) => <CustomDrawerContent {...props} parent={navigation} />}
-      screenOptions={{
-        headerShown: true,
-        headerTitle: 'OurVotes',
-        headerTitleAlign: 'center',
-        headerStyle: {
-          elevation: 0,
-        },
-        drawerIcon: ({ focused, color, size})=> <Bars3Icon size={size} color='#1e1e1e'/>
-      }}
+      screenOptions={() =>(
+        {
+          headerShown: true,
+          headerTitle: 'OurVotes',
+          headerTitleAlign: 'center',
+          headerStyle: {
+            elevation: 0,
+          },
+        }
+      )}
       >
-      <Drawer.Screen name="main" component={Home}/>
+      <Drawer.Screen name="main">
+        {(props) => <Home {...props} stack={navigation}/>}
+      </Drawer.Screen>
     </Drawer.Navigator>
   );
 }
@@ -90,6 +95,8 @@ const App = () => {
         />
         <Stack.Screen name="Registration" component={Registration} options={{ headerShown: false }}/>
         <Stack.Screen name="Validation" component={Validation} options={{ headerShown: false }}/>
+        <Stack.Screen name="Results" component={Results} options={{ headerShown: false }}/>
+        <Stack.Screen name="Voting" component={Voting} options={{ headerShown: false }}/>
 	    </Stack.Navigator>
     </NavigationContainer>
   );
