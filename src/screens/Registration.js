@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, Pressable} from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, Pressable, ScrollView} from 'react-native'
 import React,{useState} from 'react'
 
 import {ChevronLeftIcon} from "react-native-heroicons/solid"
@@ -35,24 +35,26 @@ export default function Registration({navigation}) {
           <View style={{width: '100%', alignItems: 'center', marginVertical: 10}}>
             <StepsView index={step}/>
           </View>
-          {
-            step === 0?
-            <IdentificationList/>
-            :null
-          }
-          {
-            step === 1?
-            <LocationList/>
-            :null
-          }
-          {
-            step === 2?
-            <SecurityList/>
-            :null
-          }
-          <View style={{width: '100%', alignItems: 'center', marginVertical: 10}}>
-            <CustomButton color='red' title={step === 2? 'Finish': 'Next'} callback={stepNavigator}/>
-          </View>
+          <ScrollView style={{width: '100%'}}>
+            {
+              step === 0?
+              <IdentificationList/>
+              :null
+            }
+            {
+              step === 1?
+              <LocationList/>
+              :null
+            }
+            {
+              step === 2?
+              <SecurityList/>
+              :null
+            }
+            <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', marginVertical: 40}}>
+              <CustomButton color='red' title={step === 2? 'Finish': 'Next'} callback={stepNavigator}/>
+            </View> 
+          </ScrollView>
         </View>
       </View>
     </SafeAreaView>

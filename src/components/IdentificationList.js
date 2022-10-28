@@ -11,19 +11,19 @@ export default function IdentificationList() {
 
   return (
     <View style={{width: '100%', paddingHorizontal: 10, marginVertical: 5}}>
-      <Text style={{fontSize: 15}}>Identification Data</Text>
-      <TextInput placeholder='Id number' style={styles.input} value={idNo} onChange={(e)=> setIdNo('')}/>
-      <TextInput placeholder='Dob' style={styles.input} value={dob} />
-      <TextInput placeholder='First Name' style={styles.input} value={first}/>
-      <TextInput placeholder='Second Name' style={styles.input} value={last}/>
-      <TextInput placeholder='Tel number' style={styles.input} value={tel}/>
+      <Text style={{fontSize: 15, color: '#000'}}>Identification Data</Text>
+      <TextInput placeholder='Id number' style={styles.input} value={idNo} onChangeText={(t)=> setIdNo(t)}/>
+      <TextInput placeholder='Dob' style={styles.input} value={dob} onChangeText={(t)=> setDob(t)}/>
+      <TextInput placeholder='First Name' style={styles.input} value={first} onChangeText={(t)=> setFirst(t)}/>
+      <TextInput placeholder='Second Name' style={styles.input} value={last} onChangeText={(t)=> setLast(t)}/>
+      <TextInput placeholder='Tel number' style={styles.input} value={tel} onChangeText={(t)=> setTel(t)}/>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   input:{
-    backgroundColor: '#23bc64',
+    backgroundColor: '#6699ff',
     marginVertical: 5,
     borderRadius: 5,
   }
